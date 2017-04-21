@@ -1,0 +1,9 @@
+.btn:hover, .btn.__ghostlab-hover__, .btn-large:hover{
+   background-color: #4e6cad;
+}
+.btn:focus, .btn.__ghostlab-focus__, .btn-large:focus, .btn-large.__ghostlab-focus__, .btn-floating:focus, .btn-floating.__ghostlab-focus__{
+    background-color: #4e6cad;
+}
+.button:focus{
+    background-color: #4e6cad;
+}

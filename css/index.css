@@ -1,0 +1,28 @@
+/*#0e1c4f*/
+html, body{
+  height:100%;
+}
+figure{
+    margin: 0 !important;
+}
+.row{
+    margin-bottom: 0;
+    height: 100%;
+}
+.container-logos{
+    margin-top: 8%;
+}
+.container-logos img{
+    width: 100%;
+}
+.first-logo{
+    margin-top: 10px;
+}
+.bg-ieee{
+    background-color: #0e1c4f;
+    /*background-image: url(../img/bg-ieee2.jpeg);*/
+    height: calc(100% - 119px);
+}
+.fb-color{
+    background-color: #3b5999;
+}
