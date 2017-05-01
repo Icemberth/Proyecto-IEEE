@@ -1,0 +1,38 @@
+extends layout
+block content
+    link(rel='stylesheet', href='stylesheets/index.css')
+    link(rel='stylesheet', href='stylesheets/ieee.css')
+    .row
+      .col.s12.m12.l12.center-align.container-logos
+        // CONTAINER LOGOS
+        .col.s6.m6.l6.left-align
+          figure
+            img.first-logo(src='images/logo-css.jpg', alt='')
+        .col.s6.m6.l6.right-align
+          figure
+            img(src='images/logo-ieee.png', alt='')
+      // END CONTAINER LOGOS
+      .bg-ieee.col.s12.m12.l12.white-text.center-align
+        // CONTAINER LOGIN - REGISTER
+        h1.center-align IEEE UD
+        p.center-align ¡Networking the world!
+        button.btn.waves-effect.waves-light.fb-color.boton(type='submit', name='action')
+          | Ingresar con Facebook
+          i.material-icons.left whatshot
+      // END CONTAINER LOGIN - REGISTER
+    // <button class="boton">launch</button>
+    script(src='javascripts/jquery-2.1.1.min.js')
+    script(src='javascripts/materialize.min.js')
+    script(src='javascripts/hello.all.js')
+    script(src='javascripts/ieee.js')
+    script.
+      $(function(){
+        ieee.facebook.init();//inicia la funcionalidad de facebook
+        var response = ieee.facebook.response();//escucha a facebook para determinar el estado del login
+        if(response == true){ // realiza la verificación si ya he logueado en el sistema, de ser así, debería redireccionar directamente al inicio
+            document.location = "/home/";//redirecciono al home si todo está ok con la sessión.
+        }
+        $(".boton").on("click",function(){
+            ieee.facebook.login();
+        });
+      });

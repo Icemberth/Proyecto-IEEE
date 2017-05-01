@@ -20,15 +20,21 @@ ieee = {
 ieee.facebook = {
     init : function(){
         hello.init({
-            facebook : '808885595815802'
+            facebook : '120738061816015'
         });
     },
     response : function(){
-        return hello("facebook").getAuthResponse();
+        var online = function(session) {
+            var currentTime = (new Date()).getTime() / 1000;
+            return session && session.access_token && session.expires > currentTime;
+        };
+        var fb = hello('facebook').getAuthResponse();
+        return online(fb);
     },
     login : function(){
-        hello('facebook').login().then(function() {
-            return console.log('You are signed in to Facebook');
+        hello('facebook').login({scope: 'public_profile, email, friends'}).then(function() {
+            //return console.log('You are signed in to Facebook');
+            document.location = "/home" ;
         }, function(e) {
             console.log('Signin error: ',e.error.message);
         });
