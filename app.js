@@ -1,5 +1,6 @@
 var express = require('express');
 var mysql      = require('mysql');
+var db = require('./db');
 var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
@@ -45,5 +46,16 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
+db.connect(db.MODE_PRODUCTION, function(err) {
+  if (err) {
+    console.log('Unable to connect to MySQL.')
+    process.exit(1)
+  } else {
+    //app.listen(3000, function() {
+      console.log('Listening on port 3000...')
+    //})
+  }
+})
 
 module.exports = app;
