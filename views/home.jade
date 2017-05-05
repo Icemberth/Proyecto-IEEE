@@ -14,7 +14,7 @@ html
           .col.s12.m12.l12.center-align.container-logos
             // CONTAINER LOGOS
             .col.s12.m12.l12.left-align
-                | hola pruena
+                | hola pruena #{usuario}
           // END CONTAINER LOGOS
           .bg-ieee.col.s12.m12.l12.white-text.center-align
             // CONTAINER LOGIN - REGISTER
@@ -30,5 +30,7 @@ html
         script(src='../javascripts/ieee.js')
         script.
           $(function(){
-
+          var aux = '!{usuario}';
+                console.log("informacion", aux);
+                console.log(JSON.parse(aux));
           });
