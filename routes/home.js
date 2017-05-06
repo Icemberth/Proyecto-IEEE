@@ -4,10 +4,11 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  UserModel.getUser("1000",function(error, data){
-      console.log(data);
-      console.log(JSON.stringify(data));
-    res.render('home', { usuario: JSON.stringify(data)});
+  UserModel.getUser("2147483647",function(error, data){
+    data = JSON.stringify(data);
+      var aux = JSON.parse(data);
+    console.log(aux);
+    res.render('home', { usuario: data});
   });
 });
 
