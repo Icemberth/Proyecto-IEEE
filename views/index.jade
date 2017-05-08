@@ -30,7 +30,14 @@ block content
         ieee.facebook.init();//inicia la funcionalidad de facebook
         var response = ieee.facebook.response();//escucha a facebook para determinar el estado del login
         if(response == true){ // realiza la verificación si ya he logueado en el sistema, de ser así, debería redireccionar directamente al inicio
-            document.location = "/home/";//redirecciono al home si todo está ok con la sessión.
+            //document.location = "/home/";//redirecciono al home si todo está ok con la sessión.
+            ieee.facebook.me(function(me){ //verifico el usuario, para obtener el fbID
+              $.get("/users/user/"+me.id,function(data, status){
+                if(!data.user.length == 0) ieee.core.redirect("/home")
+                    //ieee.core.redirect("/users/register/"+me.id)
+                    ieee.core.post("/users/register/"+me.id, {user: JSON.stringify(me)});
+              });
+            });
         }
         $(".boton").on("click",function(){
             ieee.facebook.login();
